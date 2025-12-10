@@ -106,6 +106,38 @@
     width: 100%;
 }
 
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* ========================================
    HERO SECTION WITH SLIDER
    ======================================== */
@@ -601,6 +633,19 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+.developer-credit {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.developer-credit strong {
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
 /* ========================================
    ANIMATIONS
    ======================================== */
@@ -624,12 +669,42 @@
         padding: 0 1rem;
     }
 
-    .nav-links {
-        gap: 1rem;
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: flex;
     }
 
-    .nav-links a:not(.btn-primary) {
-        display: none;
+    /* Mobile navigation menu */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        gap: 1.5rem;
+        align-items: flex-start;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links a.btn-primary {
+        margin-top: 1rem;
+        text-align: center;
+        border: none;
     }
 
     .hero-title {

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './LandingPage.css';
 
 const LandingPage = () => {
+    // Mobile menu state
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     // Hero slider state
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -111,11 +114,24 @@ const LandingPage = () => {
                     <div className="nav-brand">
                         <h2>🏨 HostelHub</h2>
                     </div>
-                    <div className="nav-links">
-                        <a href="#about">About</a>
-                        <a href="#features">Features</a>
-                        <a href="#testimonials">Testimonials</a>
-                        <Link to="/login" className="btn-primary">Login</Link>
+
+                    {/* Hamburger Menu Button */}
+                    <button
+                        className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    {/* Navigation Links */}
+                    <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+                        <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+                        <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+                        <a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</a>
+                        <Link to="/login" className="btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
                     </div>
                 </div>
             </nav>
@@ -301,6 +317,7 @@ const LandingPage = () => {
                     </div>
                     <div className="footer-bottom">
                         <p>&copy; 2024 HostelHub. All rights reserved.</p>
+                        <p className="developer-credit">Made with ❤️ by <strong>Harsh Singh Tomar</strong></p>
                     </div>
                 </div>
             </footer>
