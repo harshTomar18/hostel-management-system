@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardLayout from './layouts/DashboardLayout';
 import Dashboard from './pages/Dashboard';
+import StudentDashboard from './pages/StudentDashboard';
 import Rooms from './pages/Rooms';
 import Students from './pages/Students';
 import Complaints from './pages/Complaints';
@@ -21,7 +22,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Dashboard Routes */}
+        {/* Student Dashboard (Standalone) */}
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+
+        {/* Admin Dashboard Routes */}
         <Route path="/" element={<DashboardLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="rooms" element={<Rooms />} />
