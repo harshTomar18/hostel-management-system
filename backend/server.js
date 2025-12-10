@@ -1,67 +1,65 @@
 // backend/server.js
 
-// Already existing code
+require('dotenv').config();   // <-- Make sure this is at the top
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(bodyParser.json());
 
-// Health check
-app.get('/', (req, res) => res.json({ status: 'ok' }));
-
-// ======================= Registration Route =======================
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key'; // Use environment variable in production
-
-// Update CORS configuration for production
+// ====== CORS (IMPORTANT FOR DEPLOYMENT) ======
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
   credentials: true,
-  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+// ====== Health Check ======
+app.get('/', (req, res) => res.json({ status: "ok" }));
+
+// JWT SECRET from environment
+const JWT_SECRET = process.env.JWT_SECRET || "your_fallback_jwt_secret";
+
 
 // ======================= Registration Route =======================
 app.post('/api/register', (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.status(400).json({ status: 'error', message: 'Name, email, and password required' });
+    return res.status(400).json({ status: "error", message: "Name, email, and password required" });
   }
 
-  // Check if user already exists
-  const checkSql = 'SELECT * FROM users WHERE email = ?';
-  db.query(checkSql, [email], async (err, result) => {
-    if (err) return res.status(500).json({ status: 'error', message: 'DB query failed' });
+  db.query("SELECT * FROM users WHERE email = ?", [email], async (err, user) => {
+    if (err) return res.status(500).json({ status: "error", message: "DB query failed" });
 
-    if (result.length > 0) {
-      return res.status(400).json({ status: 'error', message: 'Email already registered' });
+    if (user.length > 0) {
+      return res.status(400).json({ status: "error", message: "Email already registered" });
     }
 
-    try {
-      // Hash password
-      const hashedPassword = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 10);
 
-      // Insert new user
-      const insertSql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-      db.query(insertSql, [name, email, hashedPassword], (err, result) => {
-        if (err) return res.status(500).json({ status: 'error', message: 'DB insert failed' });
-
-        res.status(201).json({ status: 'success', message: 'User registered', id: result.insertId });
-      });
-    } catch (hashErr) {
-      return res.status(500).json({ status: 'error', message: 'Password hashing failed' });
-    }
+    db.query(
+      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+      [name, email, hashed],
+      (err, result) => {
+        if (err) return res.status(500).json({ status: "error", message: "DB insert failed" });
+        res.status(201).json({ status: "success", id: result.insertId });
+      }
+    );
   });
 });
+
 
 // ======================= Login Route =======================
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
+
+  console.log('📧 Login attempt for:', email);
 
   if (!email || !password) {
     return res.status(400).json({ status: 'error', message: 'Email and password required' });
@@ -69,7 +67,12 @@ app.post('/api/login', (req, res) => {
 
   const sql = 'SELECT * FROM users WHERE email = ?';
   db.query(sql, [email], async (err, result) => {
-    if (err) return res.status(500).json({ status: 'error', message: 'DB query failed' });
+    if (err) {
+      console.error('❌ DB query failed:', err);
+      return res.status(500).json({ status: 'error', message: 'DB query failed' });
+    }
+
+    console.log('📊 Query result:', result ? result.length : 0, 'users found');
 
     if (result.length === 0) {
       return res.status(400).json({ status: 'error', message: 'Invalid email or password' });
@@ -79,6 +82,8 @@ app.post('/api/login', (req, res) => {
 
     try {
       const isMatch = await bcrypt.compare(password, user.password);
+      console.log('🔐 Password match:', isMatch);
+
       if (!isMatch) {
         return res.status(400).json({ status: 'error', message: 'Invalid email or password' });
       }
@@ -87,6 +92,7 @@ app.post('/api/login', (req, res) => {
 
       res.json({ status: 'success', message: 'Login successful', token, user: { id: user.id, name: user.name, email: user.email } });
     } catch (compareErr) {
+      console.error('❌ Password comparison error:', compareErr);
       return res.status(500).json({ status: 'error', message: 'Login failed' });
     }
   });
@@ -389,4 +395,4 @@ app.get('/api/staff', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
