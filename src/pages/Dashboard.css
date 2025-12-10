@@ -1,0 +1,808 @@
+.dashboard-container {
+    animation: fadeIn 0.5s ease;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.report-btn {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    color: #475569;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.report-btn:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border-top: 4px solid transparent;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.stat-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+}
+
+.stat-label {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-subtext {
+    font-size: 0.8rem;
+    color: #10b981;
+    /* Green for positive growth */
+    margin-top: 0.4rem;
+}
+
+.dashboard-grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.main-chart-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.side-panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.section-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.2rem;
+    color: #1e293b;
+}
+
+.chart-filter {
+    padding: 0.4rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    color: #64748b;
+    outline: none;
+}
+
+/* Bar Chart Simulation */
+.chart-container {
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 1rem;
+}
+
+.bar-chart {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 1rem;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    width: 6%;
+}
+
+.bar {
+    width: 100%;
+    background-color: #3b82f6;
+    border-radius: 4px 4px 0 0;
+    transition: height 1s ease;
+}
+
+.bar-label {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Activity List */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.activity-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.activity-icon.checkin {
+    background-color: #dbeafe;
+}
+
+.activity-icon.issue {
+    background-color: #fee2e2;
+}
+
+.activity-icon.payment {
+    background-color: #d1fae5;
+}
+
+.activity-icon.notice {
+    background-color: #fef3c7;
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-text {
+    font-size: 0.9rem;
+    color: #334155;
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Donut Chart Simulation */
+.occupancy-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donut-chart {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(#3b82f6 0% 85%, #e2e8f0 85% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.donut-hole {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.donut-label {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.chart-legend {
+    width: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.occupied {
+    background-color: #3b82f6;
+}
+
+.dot.available {
+    background-color: #e2e8f0;
+}
+
+.dot.maintenance {
+    background-color: #ef4444;
+}
+
+/* Staff List */
+.staff-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.staff-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #e2e8f0;
+    color: #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.staff-info {
+    flex: 1;
+}
+
+.staff-info h4 {
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 0.2rem;
+}
+
+.staff-info p {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.staff-status {
+    font-size: 0.8rem;
+}
+
+.staff-status.active {
+    color: #10b981;
+}
+
+
+
+.bar-label {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Activity List */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.activity-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.activity-icon.checkin {
+    background-color: #dbeafe;
+}
+
+.activity-icon.issue {
+    background-color: #fee2e2;
+}
+
+.activity-icon.payment {
+    background-color: #d1fae5;
+}
+
+.activity-icon.notice {
+    background-color: #fef3c7;
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-text {
+    font-size: 0.9rem;
+    color: #334155;
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Donut Chart Simulation */
+.occupancy-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donut-chart {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(#3b82f6 0% 85%, #e2e8f0 85% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.donut-hole {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.donut-label {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.chart-legend {
+    width: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.occupied {
+    background-color: #3b82f6;
+}
+
+.dot.available {
+    background-color: #e2e8f0;
+}
+
+.dot.maintenance {
+    background-color: #ef4444;
+}
+
+/* Staff List */
+.staff-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.staff-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #e2e8f0;
+    color: #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.staff-info {
+    flex: 1;
+}
+
+.staff-info h4 {
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 0.2rem;
+}
+
+.staff-info p {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.staff-status {
+    font-size: 0.8rem;
+}
+
+.staff-status.active {
+    color: #10b981;
+}
+
+.staff-status.off-duty {
+    color: #cbd5e1;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .report-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .activity-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .activity-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .activity-icon.checkin {
+        background-color: #dbeafe;
+    }
+
+    .activity-icon.issue {
+        background-color: #fee2e2;
+    }
+
+    .activity-icon.payment {
+        background-color: #d1fae5;
+    }
+
+    .activity-icon.notice {
+        background-color: #fef3c7;
+    }
+
+    .activity-details {
+        flex: 1;
+    }
+
+    .activity-text {
+        font-size: 0.9rem;
+        color: #334155;
+        margin-bottom: 0.2rem;
+        line-height: 1.4;
+    }
+
+    .activity-time {
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
+    /* Donut Chart Simulation */
+    .occupancy-chart-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .donut-chart {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: conic-gradient(#3b82f6 0% 85%, #e2e8f0 85% 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .donut-hole {
+        width: 120px;
+        height: 120px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .donut-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .donut-label {
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+
+    .chart-legend {
+        width: 100%;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: #475569;
+        margin-bottom: 0.5rem;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .dot.occupied {
+        background-color: #3b82f6;
+    }
+
+    .dot.available {
+        background-color: #e2e8f0;
+    }
+
+    .dot.maintenance {
+        background-color: #ef4444;
+    }
+
+    /* Staff List */
+    .staff-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .staff-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem;
+        background-color: #f8fafc;
+        border-radius: 8px;
+    }
+
+    .staff-avatar {
+        width: 36px;
+        height: 36px;
+        background-color: #e2e8f0;
+        color: #64748b;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .staff-info {
+        flex: 1;
+    }
+
+    .staff-info h4 {
+        font-size: 0.95rem;
+        color: #334155;
+        margin-bottom: 0.2rem;
+    }
+
+    .staff-info p {
+        font-size: 0.8rem;
+        color: #64748b;
+    }
+
+    .staff-status {
+        font-size: 0.8rem;
+    }
+
+    .staff-status.active {
+        color: #10b981;
+    }
+
+    .staff-status.off-duty {
+        color: #cbd5e1;
+    }
+
+    @media (max-width: 1024px) {
+        .dashboard-grid-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .report-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Staggered Animations */
+    .stat-card {
+        animation: slideInUp 0.5s ease-out forwards;
+        /* opacity: 0; Removed to ensure visibility if animation fails */
+    }
+
+    .stat-card:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .stat-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .stat-card:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .stat-card:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .section-card {
+        animation: fadeIn 0.6s ease-out forwards;
+        /* opacity: 0; Removed to ensure visibility if animation fails */
+        animation-delay: 0.3s;
+    }}

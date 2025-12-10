@@ -1,0 +1,112 @@
+.notices-container {
+    animation: fadeIn 0.5s ease;
+}
+
+.notices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+.see-more-btn {
+    background: none;
+    border: none;
+    color: #1565c0;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.see-more-btn:hover {
+    text-decoration: underline;
+}
+
+.notice-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.2s;
+}
+
+.notice-card:hover {
+    transform: translateY(-4px);
+}
+
+.notice-type-strip {
+    width: 6px;
+    flex-shrink: 0;
+}
+
+.notice-type-strip.important {
+    background-color: #dc2626;
+}
+
+.notice-type-strip.info {
+    background-color: #2563eb;
+}
+
+.notice-type-strip.event {
+    background-color: #10b981;
+}
+
+.notice-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.notice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.notice-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.notice-badge.important {
+    color: #dc2626;
+    background-color: #fee2e2;
+}
+
+.notice-badge.info {
+    color: #2563eb;
+    background-color: #dbeafe;
+}
+
+.notice-badge.event {
+    color: #059669;
+    background-color: #d1fae5;
+}
+
+.notice-date {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.notice-content h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    margin-bottom: 0.8rem;
+}
+
+.notice-content p {
+    color: #475569;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.notice-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}

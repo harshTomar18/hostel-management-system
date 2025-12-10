@@ -1,16 +1,104 @@
-# React + Vite
+# Hostel Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-stack Progressive Web App (PWA) for managing hostel operations including student management, room allocation, complaints tracking, and notice board functionality.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dashboard**: Real-time statistics and activity monitoring
+- **Room Management**: Track room availability, capacity, and occupancy
+- **Student Management**: Complete student records with room assignments
+- **Complaints System**: Track and manage maintenance requests
+- **Notice Board**: Post and manage hostel announcements
+- **Staff Directory**: Manage hostel staff information
+- **PWA Support**: Install as a mobile/desktop app with offline capabilities
+- **Authentication**: Secure login and registration system
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- React 19
+- Vite
+- React Router
+- PWA (Progressive Web App)
+- CSS3 with modern animations
 
-## Expanding the ESLint configuration
+### Backend
+- Node.js
+- Express.js
+- MySQL Database
+- JWT Authentication
+- bcrypt for password hashing
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Local Development
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MySQL Server
+- npm or yarn
+
+### Frontend Setup
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### Backend Setup
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Create .env file (copy from .env.example)
+# Add your database credentials
+
+# Start server
+npm start
+```
+
+### Database Setup
+1. Create a MySQL database
+2. Run the table creation script: `node backend/create-tables.js`
+3. Update database credentials in `backend/.env`
+
+## 🌐 Deployment
+
+This application is configured for free deployment on:
+- **Frontend**: Vercel
+- **Backend**: Render
+- **Database**: Railway
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+## 📝 Environment Variables
+
+### Frontend (.env)
+```
+VITE_API_URL=your_backend_url
+```
+
+### Backend (backend/.env)
+```
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_NAME=your_database_name
+JWT_SECRET=your_jwt_secret
+PORT=5000
+CORS_ORIGIN=your_frontend_url
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the MIT License.

@@ -1,0 +1,105 @@
+/* ===============================
+   Container (Perfect Centering)
+================================ */
+.contact-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;      /* centers horizontally */
+  align-items: flex-start;       /* prevents vertical stretching */
+  padding: 4rem 1.5rem;
+}
+
+/* Wrapper for proper alignment */
+.contact-wrapper {
+  width: 100%;
+  max-width: 650px;              /* fixed width form */
+  animation: fadeIn 0.7s ease;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: #111827;
+}
+
+/* ===============================
+   Form Area
+================================ */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 14px;
+  margin: 0 auto;                /* ensures perfect horizontal centering */
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: 0.25s ease;
+}
+
+/* Focus Effect */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Button */
+.contact-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  font-size: 1rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background: #1e4ecf;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 500px) {
+  .contact-form {
+    padding: 1.8rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+}

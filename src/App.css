@@ -1,0 +1,89 @@
+/* ============================
+   GLOBAL CONTAINER
+============================ */
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: left;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+}
+
+/* ============================
+   LOGO STYLING
+============================ */
+.logo {
+  height: 80px;
+  padding: 20px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  will-change: transform, filter;
+}
+
+/* Hover glow */
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 16px rgba(100, 108, 255, 0.4));
+}
+
+/* React logo special glow */
+.logo.react:hover {
+  filter: drop-shadow(0 4px 16px rgba(97, 218, 251, 0.45));
+}
+
+/* Smooth spin animation */
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo.react {
+    animation: logo-spin infinite 18s linear;
+  }
+}
+
+/* ============================
+   CARD UI – Modern design
+============================ */
+.card {
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 24px;
+}
+
+/* Subtle card hover */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* ============================
+   DOC TEXT
+============================ */
+.read-the-docs {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* ============================
+   RESPONSIVE IMPROVEMENTS
+============================ */
+@media (max-width: 768px) {
+  #root {
+    padding: 28px 16px;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}

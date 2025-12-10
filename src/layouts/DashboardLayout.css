@@ -1,0 +1,127 @@
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f1f5f9;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    /* Default width */
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard-layout.sidebar-closed .main-content {
+    margin-left: 80px;
+    /* Collapsed width */
+}
+
+.top-bar {
+    height: 64px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #334155;
+    margin-right: 1rem;
+    display: block;
+    z-index: 1100;
+    /* Try to boost z-index */
+}
+
+.search-bar input {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    width: 300px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+    border-color: #2563eb;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #334155;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.content-area {
+    padding: 2rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .dashboard-layout.sidebar-open .main-content {
+        margin-left: 0;
+        /* Don't push content on mobile, overlay instead */
+    }
+
+    .dashboard-layout.sidebar-closed .main-content {
+        margin-left: 0;
+    }
+
+    .search-bar {
+        display: none;
+    }
+
+    .top-bar {
+        padding: 0 1rem;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        padding: 0 0.5rem;
+    }
+}
