@@ -316,7 +316,7 @@ const LandingPage = () => {
                         </div>
                     </div>
                     <div className="footer-bottom">
-                        <p>&copy; 2024 HostelHub. All rights reserved.</p>
+                        <p>&copy; 2026 HostelHub. All rights reserved.</p>
                         <p className="developer-credit">Made with ❤️ by <strong>Harsh Singh Tomar</strong></p>
                     </div>
                 </div>
