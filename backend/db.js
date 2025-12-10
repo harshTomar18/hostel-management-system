@@ -11,9 +11,9 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || 'sampledb',
   multipleStatements: false,
   connectTimeout: 10000,
-  acquireTimeout: 10000,
   waitForConnections: true,
-  queueLimit: 0
+  queueLimit: 0,
+  ssl: process.env.DB_HOST && process.env.DB_HOST.includes('aivencloud') ? { rejectUnauthorized: true } : undefined
 });
 
 // Test the connection
